@@ -42,43 +42,15 @@ int add(void *data, char **args)
     return r;
 }
 
-int error_handing_add_2(char **args)
-{
-    int count = 0;
-    int error = 1;
-
-    while (args[count] != NULL) {
-        if (my_strcmp("WIRE", args[count]) == 0)
-            error = 0;
-        if (my_strcmp("ACTUATOR", args[count]) == 0)
-            error = 0;
-        if (my_strcmp("DEVICE", args[count]) == 0)
-            error = 0;
-        if (my_strcmp("SENSOR", args[count]) == 0)
-            error = 0;
-        if (my_strcmp("PROCESSOR", args[count]) == 0)
-            error = 0;
-        count += 2;
-        if (error == 1)
-            return 84;
-        error = 1;
-    }
-    return 0;
-}
-
 int error_handing_add(char **args)
 {
     int count = 0;
-    int r = 0;
 
     while (args[count] != NULL)
         count++;
     while (count > 1)
         count -= 2;
     if (count != 0)
-        return 84;
-    r = error_handing_add_2(args);
-    if (r == 84)
         return 84;
     return 0;
 }
